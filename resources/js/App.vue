@@ -1,7 +1,7 @@
 <script setup>
-import MainHeader from './components/partials/MainHeader.vue'
-import MainFooter from './components/partials/MainFooter.vue'
-import MainSidebar from './components/partials/MainSidebar.vue'
+import MainHeader from './components/main/MainHeader.vue'
+import MainFooter from './components/main/MainFooter.vue'
+import MainSidebar from './components/main/MainSidebar.vue'
 
 import { RouterView } from 'vue-router'
 </script>
