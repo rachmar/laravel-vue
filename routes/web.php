@@ -15,4 +15,6 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('{home}', HomeController::class)->where('home', '(.*)');
+Route::get('{home}', function(){
+    return view('home');
+})->where('home', '(.*)');
