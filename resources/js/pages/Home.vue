@@ -1,13 +1,20 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useTodoStore } from '../stores/todo'
+import { useAuthStore } from '../stores/auth'
 import { useModalModule } from '../modules/modal'
 
-import MainContent from '../components/main/MainContent.vue'
-import ModalForm from '../components/modals/ModalForm.vue'
+import Modal from '../components/modules/Modal.vue'
+import HomeLayout from '../components/layouts/HomeLayout.vue'
+import { storeToRefs } from 'pinia'
+
+const modalModule = useModalModule();
 
 const todoStore = useTodoStore();
-const modalModule = useModalModule();
+
+const authStore = useAuthStore();
+const {incrementCount} = authStore;
+const {count} = storeToRefs(authStore);
 
 onMounted(async () => {
   await todoStore.getTodos();
@@ -16,8 +23,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <MainContent>
+  <HomeLayout>
     <div>
+      <button type="button" @click="incrementCount">Increament Count {{ count }}</button>
 
       <button type="button" @click="modalModule.openModal()">Open Modal</button>
 
@@ -45,7 +53,7 @@ onMounted(async () => {
         </div>
       </div>
 
-      <ModalForm :modalModule="modalModule">
+      <Modal :modalModule="modalModule">
         <form>
           <div class="row">
             <div class="col-md-12">
@@ -258,10 +266,10 @@ onMounted(async () => {
             </div>
           </div>
         </form>
-      </ModalForm>
+      </Modal>
 
     </div>
-  </MainContent>
+  </HomeLayout>
 </template>
 
 <style scoped>

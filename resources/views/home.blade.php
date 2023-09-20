@@ -7,7 +7,7 @@
     <title>Laravel</title>
     @vite(['resources/css/main.css', 'resources/js/main.js'])
   </head>
-  <body class="hold-transition sidebar-mini">
+  <body>
     <div id="app"></div>
   </body>
 </html>

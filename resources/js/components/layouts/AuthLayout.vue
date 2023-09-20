@@ -1,9 +1,10 @@
 <script setup>
-import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <RouterView />
+    <div class="hold-transition login-page">
+        <slot />
+    </div>
 </template>
 
 <style scoped>

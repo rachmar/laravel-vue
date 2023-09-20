@@ -2,7 +2,7 @@ import axios from "axios";
 import { defineStore } from "pinia";
 
 
-export const useTodoStore = defineStore('auth', {
+export const useTodoStore = defineStore('todo', {
     state: () => ({
         currentTodos: []
     }),
