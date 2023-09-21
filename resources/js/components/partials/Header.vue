@@ -1,16 +1,21 @@
 <script setup>
 import { useAuthStore } from '../../stores/auth'
 import { RouterLink, useRouter } from 'vue-router'
+import { useSweetAlert } from '../../modules/sweetalert'
 
 const router = useRouter();
 const authStore = useAuthStore();
+const sweetAlert = useSweetAlert();
 
 const handleLogout = async () => {
 
-    await authStore.logout();
+    const confirmed = await sweetAlert.showAlert();
 
-    router.push({ name: 'login'});
-    
+    if (confirmed) {
+        await authStore.logout();
+        router.push({ name: 'login' });
+    }
+
 }
 </script>
 
@@ -22,6 +27,7 @@ const handleLogout = async () => {
                     <i class="fas fa-bars"></i>
                 </a>
             </li>
+            
             <li class="nav-item d-none d-sm-inline-block">
                 <RouterLink :to="{name:'home'}" class="nav-link"><i class="fas fa-home"></i> &nbsp; Home</RouterLink>
             </li>

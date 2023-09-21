@@ -3,7 +3,7 @@ import { useToastr } from "../modules/toastr"
 
 import axios from "../modules/axios"
 
-const { showToast } = useToastr();
+const { showToast( } = useToastr();
 
 export const useAuthStore = defineStore("auth", {
     state: () => ({
@@ -23,13 +23,12 @@ export const useAuthStore = defineStore("auth", {
             try {
                 this.getToken();
                 const response = await axios.post("/api/login", payload);
-                this.authUser = response.data.data;
-                await showToast("Success Logged in", "success");
+                this.authUser = response.data.data || null;
             } catch (error) {
                 if (error.response && error.response.status === 422) {
-                    await showToast(error.response.data.errors, "info");
+                    await showToast((error.response.data.errors, "info");
                 } else {
-                    await showToast(error.response.data.message, "error");
+                    await showToast((error.response.data.message, "error");
                 }
             }
         },
@@ -39,14 +38,14 @@ export const useAuthStore = defineStore("auth", {
                 await axios.post("/api/logout");
                 this.authUser = null;
             } catch (error) {
-                await showToast(error.response.data.message, "error");
+                showToast((error.response.data.message, "error");
             }
         },
 
         async checkAuth() {
             try {
                 const response = await axios.get("/api/user");
-                this.authUser = response.data.data;
+                this.authUser = response.data.data || null;
                 console.log('Auth', this.authUser);
             } catch (error) {
                 console.error('Auth', error.response.data);
