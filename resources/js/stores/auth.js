@@ -6,6 +6,7 @@ import axios from "../modules/axios"
 const { showToast } = useToastr();
 
 export const useAuthStore = defineStore("auth", {
+    
     state: () => ({
         authUser: null,
     }),
@@ -24,7 +25,20 @@ export const useAuthStore = defineStore("auth", {
                 this.getToken();
                 const response = await axios.post("/api/login", payload);
                 this.authUser = response.data.data;
-                await showToast("Success Logged in", "success");
+            } catch (error) {
+                if (error.response && error.response.status === 422) {
+                    await showToast(error.response.data.errors, "info");
+                } else {
+                    await showToast(error.response.data.message, "error");
+                }
+            }
+        },
+
+        async register(payload) {
+            try {
+                this.getToken();
+                const response = await axios.post("/api/register", payload);
+                this.authUser = response.data.data;
             } catch (error) {
                 if (error.response && error.response.status === 422) {
                     await showToast(error.response.data.errors, "info");

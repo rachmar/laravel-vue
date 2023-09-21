@@ -18,10 +18,10 @@ const handleLogin = async () => {
         password: form.value.password,
     });
 
-    router.push({ name: 'home'});
-    
+    if(authStore.user){
+        router.push({ name: 'home'});
+    }
 }
-
 </script>
 
 <template>
