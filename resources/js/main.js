@@ -2,19 +2,16 @@ import '/node_modules/admin-lte/plugins/jquery/jquery.min.js'
 import '/node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js'
 import '/node_modules/admin-lte/dist/js/adminlte.min.js'
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import { createApp } from "vue"
+import { createPinia } from "pinia"
+import App from "./App.vue"
+import router from "./router"
 
-import App from './App.vue'
-import router from './router'
+const app = createApp(App);
+const pinia = createPinia();
 
-const pinia = createPinia()
-pinia.use(piniaPluginPersistedstate)
+app.use(router);
+app.use(pinia);
 
-const app = createApp(App)
+app.mount("#app");
 
-app.use(pinia)
-app.use(router)
-
-app.mount('#app')

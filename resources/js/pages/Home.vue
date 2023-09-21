@@ -1,31 +1,19 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useTodoStore } from '../stores/todo'
-import { useAuthStore } from '../stores/auth'
-import { useModalModule } from '../modules/modal'
-
+import { useModal } from '../modules/modal'
 import Modal from '../components/modules/Modal.vue'
-import HomeLayout from '../components/layouts/HomeLayout.vue'
-import { storeToRefs } from 'pinia'
 
-const modalModule = useModalModule();
-
+const modalModule = useModal();
 const todoStore = useTodoStore();
-
-const authStore = useAuthStore();
-const {incrementCount} = authStore;
-const {count} = storeToRefs(authStore);
 
 onMounted(async () => {
   await todoStore.getTodos();
 });
-
 </script>
 
 <template>
-  <HomeLayout>
     <div>
-      <button type="button" @click="incrementCount">Increament Count {{ count }}</button>
 
       <button type="button" @click="modalModule.openModal()">Open Modal</button>
 
@@ -269,7 +257,6 @@ onMounted(async () => {
       </Modal>
 
     </div>
-  </HomeLayout>
 </template>
 
 <style scoped>

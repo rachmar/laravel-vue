@@ -2,8 +2,8 @@
 </script>
 
 <template>
-    <div class="hold-transition login-page">
-        <slot />
+    <div class="login-page">
+        <RouterView />
     </div>
 </template>
 

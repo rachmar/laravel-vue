@@ -1,6 +1,6 @@
-import { ref } from "vue";
+import { ref } from "vue"
 
-export const useModalModule = () => {
+export const useModal= () => {
 
     const modalState = ref(false);
     const modalTitle = ref(null);

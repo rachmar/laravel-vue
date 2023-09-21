@@ -7,7 +7,7 @@
     <title>Laravel</title>
     @vite(['resources/css/main.css', 'resources/js/main.js'])
   </head>
-  <body>
+  <body class="sidebar-mini layout-fixed">
     <div id="app"></div>
   </body>
 </html>
