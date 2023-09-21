@@ -59,7 +59,7 @@
                         Sign up using Google+
                     </a>
                 </div>
-                <RouterLink to="/auth/register" class="text-center">I already have a membership</RouterLink>
+                <RouterLink :to="{name:'login'}" class="text-center">I already have a membership</RouterLink>
             </div>
         </div>
     </div>

@@ -19,13 +19,10 @@ export const useAuthStore = defineStore("auth", {
             await axios.get("/sanctum/csrf-cookie");
         },
 
-        async login({ email, password }) {
+        async login(payload) {
             try {
                 this.getToken();
-                const response = await axios.post("/api/login", {
-                    email,
-                    password,
-                });
+                const response = await axios.post("/api/login", payload);
                 this.authUser = response.data.data || null;
             } catch (error) {
                 if (error.response && error.response.status === 422) {
@@ -36,12 +33,22 @@ export const useAuthStore = defineStore("auth", {
             }
         },
 
+        async logout() {
+            try {
+                await axios.post("/api/logout");
+                this.authUser = null;
+            } catch (error) {
+                notification(error.response.data.message, "error");
+            }
+        },
+
         async checkAuth() {
             try {
                 const response = await axios.get("/api/user");
                 this.authUser = response.data.data || null;
+                console.log('Auth', this.authUser);
             } catch (error) {
-                notification(error.response.data.message, "error");
+                console.error('Auth', error.response.data);
             }
         },
     },

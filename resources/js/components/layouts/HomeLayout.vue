@@ -4,7 +4,6 @@ import Header from '../partials/Header.vue'
 import Sidebar from '../partials/Sidebar.vue'
 
 import { RouterView } from 'vue-router'
-
 </script>
 
 <template>

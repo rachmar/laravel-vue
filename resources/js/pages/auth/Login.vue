@@ -18,7 +18,8 @@ const handleLogin = async () => {
         password: form.value.password,
     });
 
-    router.push('/home');
+    router.push({ name: 'home'});
+    
 }
 
 </script>
@@ -66,7 +67,7 @@ const handleLogin = async () => {
                     </a>
                 </div>
                 <p class="mb-0">
-                    <RouterLink to="/auth/register" class="text-center">Register a new membership</RouterLink>
+                    <RouterLink :to="{name:'register'}" class="text-center">Register a new membership</RouterLink>
                 </p>
             </div>
         </div>

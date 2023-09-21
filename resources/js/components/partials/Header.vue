@@ -1,10 +1,16 @@
 <script setup>
 import { useAuthStore } from '../../stores/auth'
+import { RouterLink, useRouter } from 'vue-router'
 
+const router = useRouter();
 const authStore = useAuthStore();
 
 const handleLogout = async () => {
-    console.log(123);
+
+    await authStore.logout();
+
+    router.push({ name: 'login'});
+    
 }
 </script>
 
@@ -17,20 +23,15 @@ const handleLogout = async () => {
                 </a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Home</a>
+                <RouterLink :to="{name:'home'}" class="nav-link"><i class="fas fa-home"></i> &nbsp; Home</RouterLink>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
+                <RouterLink :to="{name:'home'}" class="nav-link"><i class="fas fa-user"></i> &nbsp; Profile</RouterLink>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-user"></i> &nbsp; Profile
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-danger" @click.prevent="handleLogout">
+                <a class="nav-link text-danger cursor-pointer" role="button" @click.prevent="handleLogout">
                     <i class="fas fa-sign-out-alt"></i> &nbsp; Logout
                 </a>
             </li>

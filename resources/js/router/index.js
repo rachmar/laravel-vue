@@ -17,8 +17,6 @@ router.beforeEach( async (to, from, next) => {
     const isAuthenticated = authStore.user ? true : false;
     const requiresAuth = to.meta.requiresAuth;
 
-    console.log('isAuthenticated', authStore.user);
-
     if (requiresAuth && !isAuthenticated) {
         next({ name: "login" });
     } else if (!requiresAuth && isAuthenticated) {
