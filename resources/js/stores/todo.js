@@ -7,6 +7,7 @@ export const useTodoStore = defineStore('todo', {
         currentTodos: []
     }),
     getters: {
+        todos: (state) => state.currentTodos,
         totalTodos: (state) => {
             return state.currentTodos.length || 0
         }

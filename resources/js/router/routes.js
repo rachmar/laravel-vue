@@ -5,6 +5,7 @@ import HomeLayout from "../components/layouts/HomeLayout.vue"
 import Login from "../pages/auth/Login.vue"
 import Register from "../pages/auth/Register.vue"
 import Home from "../pages/Home.vue"
+import Profile from "../pages/Profile.vue"
 
 const routes = [
     {
@@ -44,6 +45,14 @@ const routes = [
                 component: Home,
                 meta: {
                     title: `Home`,
+                },
+            },
+            {
+                name: "profile",
+                path: "profile",
+                component: Profile,
+                meta: {
+                    title: `Profile`,
                 },
             },
         ],

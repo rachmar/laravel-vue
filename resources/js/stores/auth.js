@@ -63,6 +63,7 @@ export const useAuthStore = defineStore("auth", {
                 this.authUser = response.data.data;
                 console.log('Auth', this.authUser);
             } catch (error) {
+                this.authUser = null;
                 console.error('Auth', error.response.data);
             }
         },

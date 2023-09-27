@@ -27,12 +27,13 @@ const handleLogout = async () => {
                     <i class="fas fa-bars"></i>
                 </a>
             </li>
-            
+
             <li class="nav-item d-none d-sm-inline-block">
-                <RouterLink :to="{name:'home'}" class="nav-link"><i class="fas fa-home"></i> &nbsp; Home</RouterLink>
+                <RouterLink :to="{ name: 'home' }" class="nav-link"><i class="fas fa-home"></i> &nbsp; Home</RouterLink>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <RouterLink :to="{name:'home'}" class="nav-link"><i class="fas fa-user"></i> &nbsp; Profile</RouterLink>
+                <RouterLink :to="{ name: 'profile' }" class="nav-link"><i class="fas fa-user"></i> &nbsp; Profile
+                </RouterLink>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
